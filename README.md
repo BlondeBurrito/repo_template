@@ -1,6 +1,6 @@
 # repo_template
 
-Template of a Rust repo which includes some helper files I find useful for development.
+Template of a Rust repo which includes some helper files for configuring tools I find useful for development.
 
 ## justfile
 
