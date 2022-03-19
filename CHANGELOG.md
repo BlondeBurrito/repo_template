@@ -2,12 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2022-03-19
+
+### Documentation
+
+- Fixed spelling mistake in readme
+
 ## [0.1.0] - 2022-03-19
 
 ### Documentation
 
 - Added README.md explaining each of the tools/config I use
 - Make the readme slightly clearer
+- Added changelog generated b git-cliff
 
 ### Features
 
