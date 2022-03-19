@@ -6,7 +6,7 @@ Template of a Rust repo which includes some helper files for configuring tools I
 
 The [just](https://github.com/casey/just) command line runner is very useful for running a series of build steps/commands locally.
 
-In particular I like to use it to run a debug build (so the compiler can tell me about overflow errors and things), run all tests, gernerate documentation, compile the binary and finally run it - all from typing `just r` in a terminal.
+In particular I like to use it to run a debug build (so the compiler can tell me about overflow errors and things), run all tests, generate documentation, compile the binary and finally run it - all from typing `just r` in a terminal.
 
 ## rustfmt.toml
 
