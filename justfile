@@ -6,6 +6,7 @@ alias db := debug
 alias t := test
 alias b := build
 alias r := run
+alias clog := changelog
 # alias cn := clean
 
 bt := '0'
@@ -39,6 +40,10 @@ push MESSAGE +BRANCH='main':
   git commit -m "{{MESSAGE}}"
   git push origin {{BRANCH}}
 # https://github.com/rust-lang/rust/issues/58154
+
+changelog TAG:
+  git cliff --tag {{TAG}} --output CHANGELOG.md
+
 doc-coverage:
   $env:RUSTDOCFLAGS="-Z unstable-options --show-coverage"
   cargo +nightly doc --workspace --all-features --no-deps
