@@ -1,5 +1,5 @@
 # very useful command line runner - https://github.com/casey/just
-set shell := ["pwsh", "-c"]
+set windows-powershell := true
 alias c := clippy
 alias d := doc
 alias db := debug
@@ -47,3 +47,6 @@ changelog TAG:
 doc-coverage:
   $env:RUSTDOCFLAGS="-Z unstable-options --show-coverage"
   cargo +nightly doc --workspace --all-features --no-deps
+
+install:
+  cargo install --path .
