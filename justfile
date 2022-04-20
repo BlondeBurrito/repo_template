@@ -53,3 +53,18 @@ doc-coverage:
 # install the crate from the local source rather than remote
 install:
   cargo install --path .
+# Useful tools
+dev-tools:
+  cargo install loc;
+  cargo install git-cliff;
+  cargo install flamegraph;
+  cargo install cargo-bloat;
+  cargo install cargo-deadlinks;
+  cargo install cargo-geiger;
+  cargo install cargo-modules;
+  cargo install --locked cargo-outdated;
+  cargo install cargo-watch;
+  cargo install hyperfine;
+  cargo install rust-script;
+  rust-script --install-file-association;
+  cargo install --locked cargo-deny
