@@ -1,5 +1,5 @@
 # very useful command line runner - https://github.com/casey/just
-set windows-powershell := true
+set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 alias c := clippy
 alias d := doc
 alias db := debug
@@ -17,23 +17,31 @@ export RUST_BACKTRACE := bt
 default:
   just --list
 # lint the code aggressively
+copyassets:
+  ./copy_assets.ps1
 clippy:
   cargo clippy --workspace --all-targets --all-features -- -D warnings -D clippy::cargo_common_metadata -D clippy::missing_docs_in_private_items -W clippy::todo -W clippy::unimplemented
+# run a chosen example
+example NAME:
+  cargo run --release --example {{NAME}}
+# run benchmarks
+bench:
+  cargo bench -q --benches --workspace
 # run a debug build so the compiler can call out overflow errors etc, rather than making assumptions
 debug:
-  cargo build
+  cargo build --workspace
 # run tests
 test: debug
-  cargo test --release
+  cargo test --release --workspace
 # generate documentation
 doc:
-  cargo doc --release
+  cargo doc --release --workspace
 # build release bin/lib
 build: test doc
-  cargo build --release
+  cargo build --release --workspace
 # build and execute bin
 run: build
-  cargo run --release
+  cargo run --release --package repo_template
 # delete `target` directory
 clean:
   cargo clean
@@ -68,3 +76,6 @@ dev-tools:
   cargo install rust-script;
   rust-script --install-file-association;
   cargo install --locked cargo-deny
+# Run the editor
+editor:
+  cargo run --release --package goblin-lord-editor

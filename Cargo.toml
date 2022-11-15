@@ -2,17 +2,28 @@
 name = "repo_template"
 version = "0.1.0"
 edition = "2021"
-rust-version = "1.58"
+rust-version = "1.65"
 description = "A skeleton repo containing the configuration files for tools which I find useful in Rust development"
 readme = "README.md"
 homepage = "https://github.com/BlondeBurrito/repo_template"
 repository = "https://github.com/BlondeBurrito/repo_template"
 license = "MIT OR Apache-2.0"
 keywords = ["utility"]
-catagories = ["config"]
+# catagories = ["config"]
 publish = false
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[dev-dependencies]
+criterion = "0.4"
+
 [dependencies]
+
+[[bench]]
+name = "fib"
+harness = false
+
+[[example]]
+name = "hello"
+path = "examples/hello.rs"
