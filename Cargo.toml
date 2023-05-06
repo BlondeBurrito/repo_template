@@ -1,15 +1,30 @@
-[package]
-name = "repo_template"
+[workspace.package]
 version = "0.1.0"
+authors = ["BlondeBurrito"]
 edition = "2021"
-rust-version = "1.65"
-description = "A skeleton repo containing the configuration files for tools which I find useful in Rust development"
+rust-version = "1.69"
 readme = "README.md"
 homepage = "https://github.com/BlondeBurrito/repo_template"
 repository = "https://github.com/BlondeBurrito/repo_template"
-license = "MIT OR Apache-2.0"
 keywords = ["utility"]
-# catagories = ["config"]
+
+[workspace]
+members = ["crates/*"]
+# Centralised way of managing versions across all crates and packages
+[workspace.dependencies]
+example_crate = { path = "crates/example_crate" }
+
+[package]
+name = "repo_template"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "A skeleton repo containing the configuration files for tools which I find useful in Rust development"
+readme.workspace = true
+homepage.workspace = true
+repository.workspace = true
+keywords.workspace = true
 publish = false
 
 
@@ -19,6 +34,11 @@ publish = false
 criterion = "0.4"
 
 [dependencies]
+example_crate = { workspace = true }
+
+[profile.release]
+codegen-units = 1
+strip = true # strip symbols to reduce binary size on linux and mac
 
 [[bench]]
 name = "fib"

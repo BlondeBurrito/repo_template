@@ -76,6 +76,3 @@ dev-tools:
   cargo install rust-script;
   rust-script --install-file-association;
   cargo install --locked cargo-deny
-# Run the editor
-editor:
-  cargo run --release --package goblin-lord-editor
