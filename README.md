@@ -12,7 +12,7 @@ In particular I like to use it to run a debug build (so the compiler can tell me
 
 Under `./docs` are a series of puml diagrams.
 
-To generate a diagram use `just` with `just diagram [diagram_name]`, or to generate all of them 1just diagrams`.
+To generate a diagram use `just` with `just diagram [diagram_name]`, or to generate all of them `just diagrams`.
 
 ## rustfmt.toml
 
