@@ -2,7 +2,7 @@
 version = "0.1.0"
 authors = ["BlondeBurrito"]
 edition = "2021"
-rust-version = "1.70"
+rust-version = "1.74"
 readme = "README.md"
 homepage = "https://github.com/BlondeBurrito/repo_template"
 repository = "https://github.com/BlondeBurrito/repo_template"
@@ -10,6 +10,13 @@ keywords = ["utility"]
 
 [workspace]
 members = ["crates/*"]
+
+[workspace.lints.clippy]
+cargo_common_metadata = "deny"
+missing_docs_in_private_items = "deny"
+todo = "deny"
+unimplemented = "warn"
+
 # Centralised way of managing versions across all crates and packages
 [workspace.dependencies]
 example_crate = { path = "crates/example_crate" }
@@ -36,6 +43,8 @@ criterion = "0.5"
 [dependencies]
 example_crate = { workspace = true }
 
+[features]
+
 [profile.dev]
 opt-level = 1
 
@@ -46,6 +55,7 @@ strip = false
 
 [profile.release]
 codegen-units = 1
+# lto = true # slow
 strip = true # strip symbols to reduce binary size on linux and mac
 
 [[bench]]
@@ -55,3 +65,4 @@ harness = false
 [[example]]
 name = "hello"
 path = "examples/hello.rs"
+required-features = []

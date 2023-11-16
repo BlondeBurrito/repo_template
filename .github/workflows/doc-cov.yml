@@ -1,4 +1,4 @@
-name: Clippy
+name: Doc-cov
 
 on:
   push:
@@ -11,13 +11,14 @@ env:
   CARGO_TERM_COLOR: always
     
 jobs:
-  clippy:
-    name: clippy
+  doc_cov:
+    name: doc_cov
     runs-on: ubuntu-latest
     steps:
       - name: Nix dependencies
         run: sudo apt-get update; sudo apt-get -y install libasound2-dev libudev-dev lld
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cargo clippy --workspace --all-targets --all-features -- -D warnings -D clippy::cargo_common_metadata -D clippy::missing_docs_in_private_items -D clippy::todo -W clippy::unimplemented
-
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: |
+          export RUSTDOCFLAGS="-Z unstable-options --show-coverage"
+          cargo +nightly doc --workspace --all-features --no-deps --release
